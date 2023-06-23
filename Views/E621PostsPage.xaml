@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Fylth.Models.E621"
+             xmlns:viewModel="clr-namespace:Fylth.ViewModels"
+             x:Class="Fylth.Views.E621PostsPage"
+             x:DataType="viewModel:E621PostsViewModel"
+             Title="{Binding Title}"
+             Loaded="E621PostsPage_OnLoaded">
+    <ContentPage.Content>
+        <Grid ColumnDefinitions="*"
+              RowDefinitions="*,5"
+              Padding="5">
+            
+            <CollectionView ItemsSource="{Binding Posts}"
+                            SelectionMode="None">
+                
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" 
+                                     Span="5"
+                                     VerticalItemSpacing="5"
+                                     HorizontalItemSpacing="5"/>
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Post">
+                        <Label Text="{Binding Id}"></Label>
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
