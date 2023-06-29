@@ -22,6 +22,26 @@ public partial class E621PostsViewModel : BaseViewModel
     
     [ObservableProperty] 
     private Aspect _previewAspect;
+    
+    [ObservableProperty]
+    private bool _canLoadMore = false;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ShowUnShownCount))]
+    [NotifyPropertyChangedFor(nameof(UnShownCountText))]
+    private int _numUnShown = 0;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ShowUnShownCount))]
+    [NotifyPropertyChangedFor(nameof(UnShownCountText))]
+    private int _recentNumUnShown = 0;
+    
+    public bool ShowUnShownCount => NumUnShown > 0;
+
+    public string UnShownCountText =>
+        (RecentNumUnShown == 1 ? $"{RecentNumUnShown} post was" : $"{RecentNumUnShown} posts were") +
+        " hidden from your most recent request" +
+        (NumUnShown == RecentNumUnShown ? "" : $"; for a total of {NumUnShown} hidden posts") + ".";
 
     public E621PostsViewModel(E621Service e621Service)
     {
@@ -42,16 +62,7 @@ public partial class E621PostsViewModel : BaseViewModel
             await GetPostsAsync();
         });
     }
-    
-    [RelayCommand]
-    private async Task CheckPreviewAspect()
-    {
-        await Task.Run( () =>
-        {
-            PreviewAspect = SettingsService.Read(SettingsKeys.FillPreview) ? Aspect.AspectFill : Aspect.AspectFit;
-        });
-    }
-    
+
     [RelayCommand]
     private async Task GetPostsAsync()
     {
@@ -61,12 +72,17 @@ public partial class E621PostsViewModel : BaseViewModel
         {
             IsBusy = true;
             var posts = await _e621Service.GetPosts();
+            if (posts.Any())
+                CanLoadMore = true;
             if (Posts.Any()) 
                 Posts.Clear();
             foreach (var post in posts.Where(post => post.Preview.Url is not null))
             {
                 Posts.Add(post);
             }
+
+            RecentNumUnShown = posts.Count - Posts.Count;
+            NumUnShown = RecentNumUnShown;
         }
         catch (Exception exception)
         {
@@ -80,8 +96,51 @@ public partial class E621PostsViewModel : BaseViewModel
             IsRefreshing = false;
         }
     }
-    
-    
+
+    [RelayCommand]
+    private async Task GetMorePostsAsync()
+    {
+        if (IsBusy)
+            return;
+        
+        try
+        {
+            IsBusy = true;
+            List<Post> posts;
+            
+            if (Posts.Any())
+            {
+                posts = await _e621Service.GetPostsBeforeId(Posts.Last().Id);
+            }
+            else
+            {
+                Posts.Clear();
+                posts = await _e621Service.GetPosts();
+            }
+            
+            if (posts.Any())
+                CanLoadMore = true;
+            
+            foreach (var post in posts.Where(post => post.Preview.Url is not null))
+            {
+                Posts.Add(post);
+            }
+
+            RecentNumUnShown = posts.Count(post => post.Preview.Url is null);
+            NumUnShown += RecentNumUnShown;
+        }
+        catch (Exception exception)
+        {
+            Debug.WriteLine("Failed to retrieve posts from e621 with following error\n{0}", exception);
+            await Shell.Current.DisplayAlert("Error", $"Failed to retrieve posts from e621 with error:\n{exception.Message}", "OK");
+            throw;
+        }
+        finally
+        {
+            IsBusy = false;
+            IsRefreshing = false;
+        }
+    }
 
 
 }

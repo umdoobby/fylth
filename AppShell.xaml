@@ -8,15 +8,12 @@
     xmlns:views="clr-namespace:Fylth.Views"
     mc:Ignorable="d"
     Title="Fylth">
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:MainPage}"
-        Route="MainPage" />
     
-    <ShellContent
-        Title="e621 Posts"
-        ContentTemplate="{DataTemplate views:E621PostsPage}"
-        Route="E621PostsPage" />
+    <FlyoutItem Title="e621 Posts">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:E621PostsPage}"
+            Route="E621PostsPage" />
+    </FlyoutItem>
+    
 
 </Shell>

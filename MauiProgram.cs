@@ -32,7 +32,6 @@ public static class MauiProgram
 		builder.Services.AddSingleton<E621PostsViewModel>();
 
 		builder.Services.AddSingleton<E621PostsPage>();
-		builder.Services.AddTransient<MainPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

@@ -4,33 +4,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:Fylth.Models.E621"
              xmlns:viewModel="clr-namespace:Fylth.ViewModels"
+             xmlns:controls="clr-namespace:Fylth.Controls"
              x:Class="Fylth.Views.E621PostsPage"
              x:DataType="viewModel:E621PostsViewModel"
              Title="{Binding Title}"
-             Loaded="E621PostsPage_OnLoaded">
+             NavigatedTo="E621PostsPage_OnNavigatedTo">
+    
     <ContentPage.Content>
         <Grid ColumnDefinitions="*"
-              RowDefinitions="*,5"
+              RowDefinitions="*"
               Padding="5">
             
-            <CollectionView ItemsSource="{Binding Posts}"
-                            SelectionMode="None">
-                
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" 
-                                     Span="5"
-                                     VerticalItemSpacing="5"
-                                     HorizontalItemSpacing="5"/>
-                </CollectionView.ItemsLayout>
-                
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Post">
-                        <Label Text="{Binding Id}"></Label>
-                        
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                
-            </CollectionView>
+            <ActivityIndicator IsVisible="{OnIdiom Default=false, Desktop={Binding IsBusy}}"
+                               IsRunning="{Binding IsBusy}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               Grid.RowSpan="2"
+                               ZIndex="5"/>
+            
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                         Command="{Binding GetPostsCommand}"
+                         Grid.Column="0"
+                         Grid.Row="0"
+                         ZIndex="1">
+            
+                <CollectionView ItemsSource="{Binding Posts}"
+                                SelectionMode="Single"
+                                RemainingItemsThreshold="{Binding NumRemaining}"
+                                RemainingItemsThresholdReachedCommand="{Binding GetPostsCommand}">
+                    
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" 
+                                         Span="4"
+                                         VerticalItemSpacing="5"
+                                         HorizontalItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Post">
+                            <controls:PostCardView CurrentPost="{Binding}"></controls:PostCardView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                    <CollectionView.Footer>
+                        <Grid RowDefinitions="5, Auto"
+                              ColumnDefinitions="*, Auto, *">
+                            <Button ImageSource="{FontImage FontFamily='FaRegular', Glyph='&#xf2f1;', Color={StaticResource White}}"
+                                    FontAutoScalingEnabled="True"
+                                    IsEnabled="{Binding IsNotBusy}"
+                                    Text="Load more"
+                                    Command="{Binding GetMorePostsCommand}"
+                                    Grid.Row="1"
+                                    Grid.Column="1"></Button>
+                        </Grid>
+                    </CollectionView.Footer>
+                    
+                </CollectionView>
+            </RefreshView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

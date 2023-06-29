@@ -57,24 +57,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Controls\" />
 	  <Folder Include="Models\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\MainPage.xaml">
-	    <SubType>Designer</SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\E621PostsPage.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\MainPage.xaml.cs">
-	    <DependentUpon>MainPage.xaml</DependentUpon>
-	    <SubType>Code</SubType>
-	  </Compile>
 	  <Compile Update="Views\E621PostsPage.xaml.cs">
 	    <DependentUpon>E621PostsPage.xaml</DependentUpon>
 	    <SubType>Code</SubType>

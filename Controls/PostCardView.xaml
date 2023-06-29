@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="This"
+             x:Class="Fylth.Controls.PostCardView"
+             Loaded="PostCardView_OnLoaded">
+    
+    <ContentView.Content>
+        <Grid ColumnDefinitions="*, Auto, *"
+              RowDefinitions="Auto"
+              BindingContext="{x:Reference This}">
+            
+            <Border x:Name="MainBorder"
+                    Stroke="{StaticResource Primary}"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 5,5,5,5"
+                    HeightRequest="{Binding FrameSize}"
+                    WidthRequest="{Binding FrameSize}"
+                    Margin="0"
+                    Padding="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    Grid.Row="0">
+                
+                <Frame BackgroundColor="{StaticResource Gray900}"
+                       HeightRequest="{Binding PreviewSize}"
+                       WidthRequest="{Binding PreviewSize}"
+                       Margin="0,0,0,0"
+                       Padding="0,0,0,0"
+                       CornerRadius="5"
+                       IsClippedToBounds="True"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    
+                    <Image Source="{Binding CurrentPost.Preview.Url}"
+                           Aspect="{Binding PreviewAspect}"
+                           HeightRequest="{Binding PreviewSize}"
+                           WidthRequest="{Binding PreviewSize}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           SemanticProperties.Description="{Binding Id}"/>
+                </Frame>
+                
+            </Border>
+            
+        </Grid>
+    </ContentView.Content>
+    
+</ContentView>

@@ -4,11 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Color x:Key="Primary">#512BD4</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
-    <Color x:Key="Tertiary">#2B0B98</Color>
-    <Color x:Key="White">White</Color>
-    <Color x:Key="Black">Black</Color>
+    <Color x:Key="Primary">#2C75FF</Color>
+    <Color x:Key="Secondary">#9AD1D4</Color>
+    <Color x:Key="Tertiary">#035096</Color>
+    
+    <Color x:Key="White">#F4FAFF</Color>
+    <Color x:Key="Black">#070708</Color>
+    
     <Color x:Key="Gray100">#E1E1E1</Color>
     <Color x:Key="Gray200">#C8C8C8</Color>
     <Color x:Key="Gray300">#ACACAC</Color>
@@ -17,11 +19,119 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
-    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
-    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
-    <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
+
+    <Color x:Key="Primary50">#e6eeff</Color>
+    <Color x:Key="Primary100">#c0d6ff</Color>
+    <Color x:Key="Primary200">#96baff</Color>
+    <Color x:Key="Primary300">#6b9eff</Color>
+    <Color x:Key="Primary400">#4c8aff</Color>
+    <Color x:Key="Primary500">#2c75ff</Color>
+    <Color x:Key="Primary600">#276dff</Color>
+    <Color x:Key="Primary700">#2162ff</Color>
+    <Color x:Key="Primary800">#1b58ff</Color>
+    <Color x:Key="Primary900">#1045ff</Color>
+    <Color x:Key="PrimaryA100">#ffffff</Color>
+    <Color x:Key="PrimaryA200">#f8f9ff</Color>
+    <Color x:Key="PrimaryA400">#c5d0ff</Color>
+    <Color x:Key="PrimaryA700">#acbbff</Color>
+
+    <Color x:Key="Secondary50">#f3f9fa</Color>
+    <Color x:Key="Secondary100">#e1f1f2</Color>
+    <Color x:Key="Secondary200">#cde8ea</Color>
+    <Color x:Key="Secondary300">#b8dfe1</Color>
+    <Color x:Key="Secondary400">#a9d8da</Color>
+    <Color x:Key="Secondary500">#9ad1d4</Color>
+    <Color x:Key="Secondary600">#92cccf</Color>
+    <Color x:Key="Secondary700">#88c6c9</Color>
+    <Color x:Key="Secondary800">#7ec0c3</Color>
+    <Color x:Key="Secondary900">#6cb5b9</Color>
+    <Color x:Key="SecondaryA100">#ffffff</Color>
+    <Color x:Key="SecondaryA200">#feffff</Color>
+    <Color x:Key="SecondaryA400">#cbfcff</Color>
+    <Color x:Key="SecondaryA700">#b2faff</Color>
+
+    <Color x:Key="Tertiary50">#e1eaf2</Color>
+    <Color x:Key="Tertiary100">#b3cbe0</Color>
+    <Color x:Key="Tertiary200">#81a8cb</Color>
+    <Color x:Key="Tertiary300">#4f85b6</Color>
+    <Color x:Key="Tertiary400">#296aa6</Color>
+    <Color x:Key="Tertiary500">#035096</Color>
+    <Color x:Key="Tertiary600">#03498e</Color>
+    <Color x:Key="Tertiary700">#024083</Color>
+    <Color x:Key="Tertiary800">#023779</Color>
+    <Color x:Key="Tertiary900">#012768</Color>
+    <Color x:Key="TertiaryA100">#97b5ff</Color>
+    <Color x:Key="TertiaryA200">#6490ff</Color>
+    <Color x:Key="TertiaryA400">#316cff</Color>
+    <Color x:Key="TertiaryA700">#1859ff</Color>
+
+    <Color x:Key="Warn50">#fef6e0</Color>
+    <Color x:Key="Warn100">#fce9b3</Color>
+    <Color x:Key="Warn200">#fadb80</Color>
+    <Color x:Key="Warn300">#f8cd4d</Color>
+    <Color x:Key="Warn400">#f7c226</Color>
+    <Color x:Key="Warn500">#f5b700</Color>
+    <Color x:Key="Warn600">#f4b000</Color>
+    <Color x:Key="Warn700">#f2a700</Color>
+    <Color x:Key="Warn800">#f09f00</Color>
+    <Color x:Key="Warn900">#ee9000</Color>
+    <Color x:Key="WarnA100">#ffffff</Color>
+    <Color x:Key="WarnA200">#fff2e1</Color>
+    <Color x:Key="WarnA400">#ffdbae</Color>
+    <Color x:Key="WarnA700">#ffd095</Color>
+
+    <Color x:Key="Danger50">#f7e6e4</Color>
+    <Color x:Key="Danger100">#ecc2bc</Color>
+    <Color x:Key="Danger200">#e09990</Color>
+    <Color x:Key="Danger300">#d37064</Color>
+    <Color x:Key="Danger400">#c95142</Color>
+    <Color x:Key="Danger500">#c03221</Color>
+    <Color x:Key="Danger600">#ba2d1d</Color>
+    <Color x:Key="Danger700">#b22618</Color>
+    <Color x:Key="Danger800">#aa1f14</Color>
+    <Color x:Key="Danger900">#9c130b</Color>
+    <Color x:Key="DangerA100">#ffccca</Color>
+    <Color x:Key="DangerA200">#ff9b97</Color>
+    <Color x:Key="DangerA400">#ff6a64</Color>
+    <Color x:Key="DangerA700">#ff514b</Color>
+
+    <Color x:Key="Success50">#eaf1e6</Color>
+    <Color x:Key="Success100">#cadcc1</Color>
+    <Color x:Key="Success200">#a6c598</Color>
+    <Color x:Key="Success300">#82ae6f</Color>
+    <Color x:Key="Success400">#689c50</Color>
+    <Color x:Key="Success500">#4d8b31</Color>
+    <Color x:Key="Success600">#46832c</Color>
+    <Color x:Key="Success700">#3d7825</Color>
+    <Color x:Key="Success800">#346e1f</Color>
+    <Color x:Key="Success900">#255b13</Color>
+    <Color x:Key="SuccessA100">#abff94</Color>
+    <Color x:Key="SuccessA200">#82ff61</Color>
+    <Color x:Key="SuccessA400">#5aff2e</Color>
+    <Color x:Key="SuccessA700">#46ff14</Color>
+
+    <Color x:Key="Info50">#f6e3ed</Color>
+    <Color x:Key="Info100">#eab8d1</Color>
+    <Color x:Key="Info200">#dc89b2</Color>
+    <Color x:Key="Info300">#cd5a93</Color>
+    <Color x:Key="Info400">#c3367c</Color>
+    <Color x:Key="Info500">#b81365</Color>
+    <Color x:Key="Info600">#b1115d</Color>
+    <Color x:Key="Info700">#a80e53</Color>
+    <Color x:Key="Info800">#a00b49</Color>
+    <Color x:Key="Info900">#910637</Color>
+    <Color x:Key="InfoA100">#ffbed1</Color>
+    <Color x:Key="InfoA200">#ff8bad</Color>
+    <Color x:Key="InfoA400">#ff5889</Color>
+    <Color x:Key="InfoA700">#ff3e77</Color>
+    
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary500}"/>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary500}"/>
+    <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary500}"/>
+    
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
     <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}"/>
+    
     <SolidColorBrush x:Key="Gray100Brush" Color="{StaticResource Gray100}"/>
     <SolidColorBrush x:Key="Gray200Brush" Color="{StaticResource Gray200}"/>
     <SolidColorBrush x:Key="Gray300Brush" Color="{StaticResource Gray300}"/>
@@ -30,15 +140,109 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+    
+    <SolidColorBrush x:Key="Primary50Brush" Color="{StaticResource Primary50}"/>
+    <SolidColorBrush x:Key="Primary100Brush" Color="{StaticResource Primary100}"/>
+    <SolidColorBrush x:Key="Primary200Brush" Color="{StaticResource Primary200}"/>
+    <SolidColorBrush x:Key="Primary300Brush" Color="{StaticResource Primary300}"/>
+    <SolidColorBrush x:Key="Primary400Brush" Color="{StaticResource Primary400}"/>
+    <SolidColorBrush x:Key="Primary500Brush" Color="{StaticResource Primary500}"/>
+    <SolidColorBrush x:Key="Primary600Brush" Color="{StaticResource Primary600}"/>
+    <SolidColorBrush x:Key="Primary700Brush" Color="{StaticResource Primary700}"/>
+    <SolidColorBrush x:Key="Primary800Brush" Color="{StaticResource Primary800}"/>
+    <SolidColorBrush x:Key="Primary900Brush" Color="{StaticResource Primary900}"/>
+    <SolidColorBrush x:Key="PrimaryA100Brush" Color="{StaticResource PrimaryA100}"/>
+    <SolidColorBrush x:Key="PrimaryA200Brush" Color="{StaticResource PrimaryA200}"/>
+    <SolidColorBrush x:Key="PrimaryA400Brush" Color="{StaticResource PrimaryA400}"/>
+    <SolidColorBrush x:Key="PrimaryA700Brush" Color="{StaticResource PrimaryA700}"/>
 
-    <Color x:Key="Yellow100Accent">#F7B548</Color>
-    <Color x:Key="Yellow200Accent">#FFD590</Color>
-    <Color x:Key="Yellow300Accent">#FFE5B9</Color>
-    <Color x:Key="Cyan100Accent">#28C2D1</Color>
-    <Color x:Key="Cyan200Accent">#7BDDEF</Color>
-    <Color x:Key="Cyan300Accent">#C3F2F4</Color>
-    <Color x:Key="Blue100Accent">#3E8EED</Color>
-    <Color x:Key="Blue200Accent">#72ACF1</Color>
-    <Color x:Key="Blue300Accent">#A7CBF6</Color>
+    <SolidColorBrush x:Key="Secondary50Brush" Color="{StaticResource Secondary50}"/>
+    <SolidColorBrush x:Key="Secondary100Brush" Color="{StaticResource Secondary100}"/>
+    <SolidColorBrush x:Key="Secondary200Brush" Color="{StaticResource Secondary200}"/>
+    <SolidColorBrush x:Key="Secondary300Brush" Color="{StaticResource Secondary300}"/>
+    <SolidColorBrush x:Key="Secondary400Brush" Color="{StaticResource Secondary400}"/>
+    <SolidColorBrush x:Key="Secondary500Brush" Color="{StaticResource Secondary500}"/>
+    <SolidColorBrush x:Key="Secondary600Brush" Color="{StaticResource Secondary600}"/>
+    <SolidColorBrush x:Key="Secondary700Brush" Color="{StaticResource Secondary700}"/>
+    <SolidColorBrush x:Key="Secondary800Brush" Color="{StaticResource Secondary800}"/>
+    <SolidColorBrush x:Key="Secondary900Brush" Color="{StaticResource Secondary900}"/>
+    <SolidColorBrush x:Key="SecondaryA100Brush" Color="{StaticResource SecondaryA100}"/>
+    <SolidColorBrush x:Key="SecondaryA200Brush" Color="{StaticResource SecondaryA200}"/>
+    <SolidColorBrush x:Key="SecondaryA400Brush" Color="{StaticResource SecondaryA400}"/>
+    <SolidColorBrush x:Key="SecondaryA700Brush" Color="{StaticResource SecondaryA700}"/>
 
+    <SolidColorBrush x:Key="Tertiary50Brush" Color="{StaticResource Tertiary50}"/>
+    <SolidColorBrush x:Key="Tertiary100Brush" Color="{StaticResource Tertiary100}"/>
+    <SolidColorBrush x:Key="Tertiary200Brush" Color="{StaticResource Tertiary200}"/>
+    <SolidColorBrush x:Key="Tertiary300Brush" Color="{StaticResource Tertiary300}"/>
+    <SolidColorBrush x:Key="Tertiary400Brush" Color="{StaticResource Tertiary400}"/>
+    <SolidColorBrush x:Key="Tertiary500Brush" Color="{StaticResource Tertiary500}"/>
+    <SolidColorBrush x:Key="Tertiary600Brush" Color="{StaticResource Tertiary600}"/>
+    <SolidColorBrush x:Key="Tertiary700Brush" Color="{StaticResource Tertiary700}"/>
+    <SolidColorBrush x:Key="Tertiary800Brush" Color="{StaticResource Tertiary800}"/>
+    <SolidColorBrush x:Key="Tertiary900Brush" Color="{StaticResource Tertiary900}"/>
+    <SolidColorBrush x:Key="TertiaryA100Brush" Color="{StaticResource TertiaryA100}"/>
+    <SolidColorBrush x:Key="TertiaryA200Brush" Color="{StaticResource TertiaryA200}"/>
+    <SolidColorBrush x:Key="TertiaryA400Brush" Color="{StaticResource TertiaryA400}"/>
+    <SolidColorBrush x:Key="TertiaryA700Brush" Color="{StaticResource TertiaryA700}"/>
+
+    <SolidColorBrush x:Key="Warn50Brush" Color="{StaticResource Warn50}"/>
+    <SolidColorBrush x:Key="Warn100Brush" Color="{StaticResource Warn100}"/>
+    <SolidColorBrush x:Key="Warn200Brush" Color="{StaticResource Warn200}"/>
+    <SolidColorBrush x:Key="Warn300Brush" Color="{StaticResource Warn300}"/>
+    <SolidColorBrush x:Key="Warn400Brush" Color="{StaticResource Warn400}"/>
+    <SolidColorBrush x:Key="Warn500Brush" Color="{StaticResource Warn500}"/>
+    <SolidColorBrush x:Key="Warn600Brush" Color="{StaticResource Warn600}"/>
+    <SolidColorBrush x:Key="Warn700Brush" Color="{StaticResource Warn700}"/>
+    <SolidColorBrush x:Key="Warn800Brush" Color="{StaticResource Warn800}"/>
+    <SolidColorBrush x:Key="Warn900Brush" Color="{StaticResource Warn900}"/>
+    <SolidColorBrush x:Key="WarnA100Brush" Color="{StaticResource WarnA100}"/>
+    <SolidColorBrush x:Key="WarnA200Brush" Color="{StaticResource WarnA200}"/>
+    <SolidColorBrush x:Key="WarnA400Brush" Color="{StaticResource WarnA400}"/>
+    <SolidColorBrush x:Key="WarnA700Brush" Color="{StaticResource WarnA700}"/>
+
+    <SolidColorBrush x:Key="Danger50Brush" Color="{StaticResource Danger50}"/>
+    <SolidColorBrush x:Key="Danger100Brush" Color="{StaticResource Danger100}"/>
+    <SolidColorBrush x:Key="Danger200Brush" Color="{StaticResource Danger200}"/>
+    <SolidColorBrush x:Key="Danger300Brush" Color="{StaticResource Danger300}"/>
+    <SolidColorBrush x:Key="Danger400Brush" Color="{StaticResource Danger400}"/>
+    <SolidColorBrush x:Key="Danger500Brush" Color="{StaticResource Danger500}"/>
+    <SolidColorBrush x:Key="Danger600Brush" Color="{StaticResource Danger600}"/>
+    <SolidColorBrush x:Key="Danger700Brush" Color="{StaticResource Danger700}"/>
+    <SolidColorBrush x:Key="Danger800Brush" Color="{StaticResource Danger800}"/>
+    <SolidColorBrush x:Key="Danger900Brush" Color="{StaticResource Danger900}"/>
+    <SolidColorBrush x:Key="DangerA100Brush" Color="{StaticResource DangerA100}"/>
+    <SolidColorBrush x:Key="DangerA200Brush" Color="{StaticResource DangerA200}"/>
+    <SolidColorBrush x:Key="DangerA400Brush" Color="{StaticResource DangerA400}"/>
+    <SolidColorBrush x:Key="DangerA700Brush" Color="{StaticResource DangerA700}"/>
+
+    <SolidColorBrush x:Key="Success50Brush" Color="{StaticResource Success50}"/>
+    <SolidColorBrush x:Key="Success100Brush" Color="{StaticResource Success100}"/>
+    <SolidColorBrush x:Key="Success200Brush" Color="{StaticResource Success200}"/>
+    <SolidColorBrush x:Key="Success300Brush" Color="{StaticResource Success300}"/>
+    <SolidColorBrush x:Key="Success400Brush" Color="{StaticResource Success400}"/>
+    <SolidColorBrush x:Key="Success500Brush" Color="{StaticResource Success500}"/>
+    <SolidColorBrush x:Key="Success600Brush" Color="{StaticResource Success600}"/>
+    <SolidColorBrush x:Key="Success700Brush" Color="{StaticResource Success700}"/>
+    <SolidColorBrush x:Key="Success800Brush" Color="{StaticResource Success800}"/>
+    <SolidColorBrush x:Key="Success900Brush" Color="{StaticResource Success900}"/>
+    <SolidColorBrush x:Key="SuccessA100Brush" Color="{StaticResource SuccessA100}"/>
+    <SolidColorBrush x:Key="SuccessA200Brush" Color="{StaticResource SuccessA200}"/>
+    <SolidColorBrush x:Key="SuccessA400Brush" Color="{StaticResource SuccessA400}"/>
+    <SolidColorBrush x:Key="SuccessA700Brush" Color="{StaticResource SuccessA700}"/>
+
+    <SolidColorBrush x:Key="Info50Brush" Color="{StaticResource Info50}"/>
+    <SolidColorBrush x:Key="Info100Brush" Color="{StaticResource Info100}"/>
+    <SolidColorBrush x:Key="Info200Brush" Color="{StaticResource Info200}"/>
+    <SolidColorBrush x:Key="Info300Brush" Color="{StaticResource Info300}"/>
+    <SolidColorBrush x:Key="Info400Brush" Color="{StaticResource Info400}"/>
+    <SolidColorBrush x:Key="Info500Brush" Color="{StaticResource Info500}"/>
+    <SolidColorBrush x:Key="Info600Brush" Color="{StaticResource Info600}"/>
+    <SolidColorBrush x:Key="Info700Brush" Color="{StaticResource Info700}"/>
+    <SolidColorBrush x:Key="Info800Brush" Color="{StaticResource Info800}"/>
+    <SolidColorBrush x:Key="Info900Brush" Color="{StaticResource Info900}"/>
+    <SolidColorBrush x:Key="InfoA100Brush" Color="{StaticResource InfoA100}"/>
+    <SolidColorBrush x:Key="InfoA200Brush" Color="{StaticResource InfoA200}"/>
+    <SolidColorBrush x:Key="InfoA400Brush" Color="{StaticResource InfoA400}"/>
+    <SolidColorBrush x:Key="InfoA700Brush" Color="{StaticResource InfoA700}"/>
 </ResourceDictionary>
