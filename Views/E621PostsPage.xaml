@@ -7,8 +7,7 @@
              xmlns:controls="clr-namespace:Fylth.Controls"
              x:Class="Fylth.Views.E621PostsPage"
              x:DataType="viewModel:E621PostsViewModel"
-             Title="{Binding Title}"
-             NavigatedTo="E621PostsPage_OnNavigatedTo">
+             Title="{Binding Title}">
     
     <ContentPage.Content>
         <Grid ColumnDefinitions="*"
@@ -21,7 +20,6 @@
                                VerticalOptions="Center"
                                Grid.Column="0"
                                Grid.Row="0"
-                               Grid.RowSpan="2"
                                ZIndex="5"/>
             
             <RefreshView IsRefreshing="{Binding IsRefreshing}"
@@ -44,7 +42,13 @@
                     
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Post">
-                            <controls:PostCardView CurrentPost="{Binding}"></controls:PostCardView>
+                            <controls:PostCardView CurrentPost="{Binding}">
+                                <controls:PostCardView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:E621PostsViewModel}}, Path=ViewPostCommand}" 
+                                                          CommandParameter="{Binding .}"/>
+                                </controls:PostCardView.GestureRecognizers>
+                            </controls:PostCardView>
+                            
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     

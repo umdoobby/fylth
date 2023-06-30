@@ -13,16 +13,11 @@ public partial class E621PostsPage : ContentPage
     {
         InitializeComponent();
         BindingContext = viewModel;
-    }
-
-    private void E621PostsPage_OnNavigatedTo(object sender, NavigatedToEventArgs e)
-    {
+        
         if (DeviceInfo.Current.Idiom != DeviceIdiom.Desktop) return;
-        if (BindingContext is not E621PostsViewModel vm) return;
-
         ToolbarItems.Add(new ToolbarItem()
         {
-            Command = vm.GetPostsCommand,
+            Command = viewModel.GetPostsCommand,
             Text = "Refresh",
             IconImageSource = new FontImageSource()
             {

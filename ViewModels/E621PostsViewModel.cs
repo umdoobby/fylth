@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using Fylth.Models.E621;
 using Fylth.Models.Settings;
 using Fylth.Services;
+using Fylth.Views;
 
 namespace Fylth.ViewModels;
 
@@ -140,6 +141,18 @@ public partial class E621PostsViewModel : BaseViewModel
             IsBusy = false;
             IsRefreshing = false;
         }
+    }
+    
+    [RelayCommand]
+    private async Task ViewPost(Post post)
+    {
+        if (post is null)
+            return;
+
+        await Shell.Current.GoToAsync($"{nameof(E621ViewPostPage)}", true, new Dictionary<string, object>
+        {
+            { "Post", post }
+        });
     }
 
 

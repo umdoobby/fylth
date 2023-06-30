@@ -16,7 +16,7 @@ public partial class PostCardView : ContentView
     public static readonly BindableProperty CurrentPostProperty = BindableProperty.Create(nameof(CurrentPost), typeof(Post), typeof(PostCardView));
 
     public static readonly BindableProperty PreviewSizeProperty = BindableProperty.Create(nameof(PreviewSize), typeof(int), typeof(PostCardView), 150);
-    
+
     public Post CurrentPost
     {
         get => (Post)GetValue(CurrentPostProperty);

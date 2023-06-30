@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fylth.Views.E621ViewPostPage"
+             xmlns:models="clr-namespace:Fylth.Models.E621"
+             xmlns:viewModel="clr-namespace:Fylth.ViewModels"
+             xmlns:controls="clr-namespace:Fylth.Controls"
+             x:DataType="viewModel:E621ViewPostViewModel"
+             Appearing="E621ViewPostPage_OnAppearing"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        
+        <Grid RowDefinitions="5, Auto, Auto, *"
+              ColumnDefinitions="5, Auto, Auto, *">
+            
+            <Frame Background="{StaticResource Primary}"
+                   WidthRequest="1000"
+                   HeightRequest="1000"
+                   Grid.Row="1"
+                   Grid.Column="1">
+            </Frame>
+            
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

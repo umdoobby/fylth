@@ -30,8 +30,10 @@ public static class MauiProgram
 		builder.Services.AddSingleton<E621Service>();
 
 		builder.Services.AddSingleton<E621PostsViewModel>();
+		builder.Services.AddTransient<E621ViewPostViewModel>();
 
 		builder.Services.AddSingleton<E621PostsPage>();
+		builder.Services.AddTransient<E621ViewPostPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

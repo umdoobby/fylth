@@ -7,8 +7,8 @@
              Loaded="PostCardView_OnLoaded">
     
     <ContentView.Content>
-        <Grid ColumnDefinitions="*, Auto, *"
-              RowDefinitions="Auto"
+        <Grid ColumnDefinitions="*"
+              RowDefinitions="*"
               BindingContext="{x:Reference This}">
             
             <Border x:Name="MainBorder"
@@ -24,7 +24,8 @@
                     Grid.Column="1"
                     Grid.Row="0">
                 
-                <Frame BackgroundColor="{StaticResource Gray900}"
+                <Frame x:Name="CardFrame"
+                       BackgroundColor="{StaticResource Gray900}"
                        HeightRequest="{Binding PreviewSize}"
                        WidthRequest="{Binding PreviewSize}"
                        Margin="0,0,0,0"
@@ -41,8 +42,8 @@
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
                            SemanticProperties.Description="{Binding Id}"/>
+
                 </Frame>
-                
             </Border>
             
         </Grid>
