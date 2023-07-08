@@ -7,12 +7,12 @@
              xmlns:controls="clr-namespace:Fylth.Controls"
              x:Class="Fylth.Views.E621PostsPage"
              x:DataType="viewModel:E621PostsViewModel"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Loaded="E621PostsPage_OnLoaded">
     
     <ContentPage.Content>
         <Grid ColumnDefinitions="*"
-              RowDefinitions="*"
-              Padding="5">
+              RowDefinitions="*, 15">
             
             <ActivityIndicator IsVisible="{OnIdiom Default=false, Desktop={Binding IsBusy}}"
                                IsRunning="{Binding IsBusy}"
@@ -20,6 +20,7 @@
                                VerticalOptions="Center"
                                Grid.Column="0"
                                Grid.Row="0"
+                               Grid.RowSpan="2"
                                ZIndex="5"/>
             
             <RefreshView IsRefreshing="{Binding IsRefreshing}"
@@ -27,46 +28,51 @@
                          Grid.Column="0"
                          Grid.Row="0"
                          ZIndex="1">
-            
+
+                <!-- RemainingItemsThreshold is not working on windows, issue #1 -->
                 <CollectionView ItemsSource="{Binding Posts}"
-                                SelectionMode="Single"
-                                RemainingItemsThreshold="{Binding NumRemaining}"
-                                RemainingItemsThresholdReachedCommand="{Binding GetPostsCommand}">
-                    
+                            SelectionMode="Single"
+                            RemainingItemsThreshold="{Binding NumRemaining}"
+                            RemainingItemsThresholdReachedCommand="{Binding GetMorePostsCommand}">
+
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" 
-                                         Span="4"
-                                         VerticalItemSpacing="5"
-                                         HorizontalItemSpacing="5"/>
+                                     Span="{Binding NumOfColumns}"
+                                     VerticalItemSpacing="5"
+                                     HorizontalItemSpacing="5"/>
                     </CollectionView.ItemsLayout>
-                    
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Post">
-                            <controls:PostCardView CurrentPost="{Binding}">
+                            <controls:PostCardView CurrentPost="{Binding}"
+                                                   PreviewSize="{Binding Source={RelativeSource AncestorType={x:Type viewModel:E621PostsViewModel}}, Path=PreviewSize}"
+                                                   BorderThickness="{Binding Source={RelativeSource AncestorType={x:Type viewModel:E621PostsViewModel}}, Path=PreviewBorderThickness}">
                                 <controls:PostCardView.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:E621PostsViewModel}}, Path=ViewPostCommand}" 
-                                                          CommandParameter="{Binding .}"/>
+                                                      CommandParameter="{Binding .}"/>
                                 </controls:PostCardView.GestureRecognizers>
                             </controls:PostCardView>
-                            
+
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                    
+
                     <CollectionView.Footer>
-                        <Grid RowDefinitions="5, Auto"
-                              ColumnDefinitions="*, Auto, *">
-                            <Button ImageSource="{FontImage FontFamily='FaRegular', Glyph='&#xf2f1;', Color={StaticResource White}}"
+                        <VerticalStackLayout>
+                            <Button ImageSource="{FontImage FontFamily='FaSolid', Glyph='&#xf0d7;', Color={StaticResource White}}"
+                                    BackgroundColor="{StaticResource Primary}"
                                     FontAutoScalingEnabled="True"
                                     IsEnabled="{Binding IsNotBusy}"
                                     Text="Load more"
                                     Command="{Binding GetMorePostsCommand}"
-                                    Grid.Row="1"
-                                    Grid.Column="1"></Button>
-                        </Grid>
+                                    Margin="0, 15, 0, 0"
+                                    HeightRequest="25"
+                                    WidthRequest="75"/>
+                        </VerticalStackLayout>
                     </CollectionView.Footer>
-                    
+
                 </CollectionView>
             </RefreshView>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

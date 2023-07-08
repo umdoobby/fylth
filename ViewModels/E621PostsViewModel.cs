@@ -20,10 +20,7 @@ public partial class E621PostsViewModel : BaseViewModel
 
     [ObservableProperty] 
     private int _numRemaining = 5;
-    
-    [ObservableProperty] 
-    private Aspect _previewAspect;
-    
+
     [ObservableProperty]
     private bool _canLoadMore = false;
 
@@ -36,7 +33,20 @@ public partial class E621PostsViewModel : BaseViewModel
     [NotifyPropertyChangedFor(nameof(ShowUnShownCount))]
     [NotifyPropertyChangedFor(nameof(UnShownCountText))]
     private int _recentNumUnShown = 0;
-    
+
+    [ObservableProperty]
+    private int _numOfColumns = 4;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(PreviewFrameSize))]
+    private int _previewSize = 150;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(PreviewFrameSize))]
+    private int _previewBorderThickness = 2;
+
+    public int PreviewFrameSize => PreviewSize + (2 * PreviewBorderThickness);
+
     public bool ShowUnShownCount => NumUnShown > 0;
 
     public string UnShownCountText =>
@@ -151,9 +161,7 @@ public partial class E621PostsViewModel : BaseViewModel
 
         await Shell.Current.GoToAsync($"{nameof(E621ViewPostPage)}", true, new Dictionary<string, object>
         {
-            { "Post", post }
+            { "SelectedPost", post }
         });
     }
-
-
 }

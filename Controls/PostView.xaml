@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:drawable="clr-namespace:Fylth.Models.Drawings"
+             xmlns:models="clr-namespace:Fylth.Models"
+             x:Class="Fylth.Controls.PostView"
+             x:Name="This"
+             BindingContext="{x:Reference This}"
+             Loaded="PostView_OnLoaded">
+    
+    <Frame BackgroundColor="Transparent"
+           CornerRadius="{Binding CornerRadius}"
+           IsClippedToBounds="True"
+           HorizontalOptions="Fill"
+           VerticalOptions="Fill"
+           Margin="0"
+           Padding="0">
+        
+        <Grid RowDefinitions="*"
+              ColumnDefinitions="*">
+        
+            <Grid.Resources>
+                <drawable:CheckerboardDrawing x:Key="BgDrawing" />
+            </Grid.Resources>
+            
+            <GraphicsView Drawable="{DynamicResource BgDrawing}"
+                          HorizontalOptions="Fill"
+                          VerticalOptions="Fill"
+                          Margin="-15"
+                          ZIndex="-99"
+                          Grid.Row="0"
+                          Grid.Column="0"/>
+            
+            <ActivityIndicator x:Name="LoadingIndicator"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Grid.Row="0"
+                               Grid.Column="0"/>
+            
+            <Image x:Name="PreviewImage"
+                   Source="{Binding PreviewContent.Url}"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   MaximumWidthRequest="{Binding SampleContent.Width}"
+                   MaximumHeightRequest="{Binding SampleContent.Height}"
+                   Aspect="AspectFit"
+                   ZIndex="0"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+
+            <Image x:Name="SampleImage"
+                   Loaded="SampleImage_OnLoaded"
+                   Source="{Binding SampleContent.Url}"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   MaximumWidthRequest="{Binding SampleContent.Width}"
+                   MaximumHeightRequest="{Binding SampleContent.Height}"
+                   Aspect="AspectFit"
+                   ZIndex="2" 
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+
+            <Image x:Name="FullImage"
+                   Loaded="FullImage_OnLoaded"
+                   Source="{Binding FileContent.Url}"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   MaximumWidthRequest="{Binding FileContent.Width}"
+                   MaximumHeightRequest="{Binding FileContent.Height}"
+                   Aspect="AspectFit"
+                   ZIndex="6" 
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+            
+            <WebView x:Name="FlashPlayer"
+                     Loaded="FlashPlayer_OnLoaded"
+                     CanGoBack="False"
+                     CanGoForward="False"
+                     VerticalOptions="Fill"
+                     HorizontalOptions="Fill"
+                     ZIndex="8"
+                     Grid.Row="0"
+                     Grid.Column="0"/>
+
+            <toolkit:MediaElement x:Name="VideoPlayer"
+                                  Loaded="VideoPlayer_OnLoaded"
+                                  Source="{Binding FileContent.Url}" 
+                                  ShouldShowPlaybackControls="True"
+                                  MaximumWidthRequest="{Binding FileContent.Width}"
+                                  MaximumHeightRequest="{Binding FileContent.Height}"
+                                  ZIndex="10"
+                                  Grid.Row="0"
+                                  Grid.Column="0"/>
+            
+        </Grid>
+        
+    </Frame>
+    
+</ContentView>

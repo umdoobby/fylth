@@ -3,24 +3,66 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fylth.Views.E621ViewPostPage"
-             xmlns:models="clr-namespace:Fylth.Models.E621"
+             xmlns:models="clr-namespace:Fylth.Models"
              xmlns:viewModel="clr-namespace:Fylth.ViewModels"
              xmlns:controls="clr-namespace:Fylth.Controls"
              x:DataType="viewModel:E621ViewPostViewModel"
              Appearing="E621ViewPostPage_OnAppearing"
+             NavigatedTo="E621ViewPostPage_OnNavigatedTo"
              Title="{Binding Title}">
+    
     <ContentPage.Content>
         
-        <Grid RowDefinitions="5, Auto, Auto, *"
-              ColumnDefinitions="5, Auto, Auto, *">
-            
-            <Frame Background="{StaticResource Primary}"
-                   WidthRequest="1000"
-                   HeightRequest="1000"
-                   Grid.Row="1"
-                   Grid.Column="1">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, *"
+              ColumnDefinitions="Auto, Auto, Auto, Auto, *"
+              Margin="20"
+              RowSpacing="20"
+              ColumnSpacing="20">
+
+            <Frame BackgroundColor="{StaticResource Gray950}"
+                   Padding="20"
+                   CornerRadius="5"
+                   WidthRequest="250"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Fill"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.RowSpan="5">
+
+                <Label Text="Tags here"></Label>
             </Frame>
-            
+
+            <Frame BackgroundColor="{StaticResource Info500}"
+                   Padding="5"
+                   CornerRadius="5"
+                   HeightRequest="50"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Start"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="4">
+
+                <Label Text="Next and back buttons"></Label>
+            </Frame>
+
+            <Border Stroke="{StaticResource Primary}"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 5,5,5,5"
+                    WidthRequest="1024"
+                    HeightRequest="768"
+                    Margin="0"
+                    Padding="1"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Grid.Row="1"
+                    Grid.Column="1">
+                
+                
+                <controls:PostView PreviewContent="{Binding SelectedPost.Preview}"
+                                   SampleContent="{Binding SelectedPost.Sample}"
+                                   FileContent="{Binding SelectedPost.File}" />
+                
+            </Border>
         </Grid>
         
     </ContentPage.Content>

@@ -17,6 +17,8 @@ public partial class PostCardView : ContentView
 
     public static readonly BindableProperty PreviewSizeProperty = BindableProperty.Create(nameof(PreviewSize), typeof(int), typeof(PostCardView), 150);
 
+    public static readonly BindableProperty BorderThicknessProperty = BindableProperty.Create(nameof(BorderThickness), typeof(int), typeof(PostCardView), 2);
+
     public Post CurrentPost
     {
         get => (Post)GetValue(CurrentPostProperty);
@@ -29,9 +31,15 @@ public partial class PostCardView : ContentView
         set => SetValue(PreviewSizeProperty, value);
     }
 
-    public int FrameSize => PreviewSize + 4;
+    public int BorderThickness
+    {
+        get => (int)GetValue(BorderThicknessProperty);
+        set => SetValue(BorderThicknessProperty, value);
+    }
 
-    public static Aspect PreviewAspect => SettingsService.Read(SettingsKeys.FillPreview) ? Aspect.AspectFill : Aspect.AspectFit;
+    public int FrameSize => PreviewSize + (2 * BorderThickness);
+
+    public Aspect PreviewAspect => SettingsService.Read(SettingsKeys.FillPreview) ? Aspect.AspectFill : Aspect.AspectFit;
 
     public PostCardView()
     {
@@ -40,13 +48,16 @@ public partial class PostCardView : ContentView
 
     private void PostCardView_OnLoaded(object sender, EventArgs e)
     {
-        MainBorder.Stroke = CurrentPost.Rating.Trim().ToLower() switch
+        if (CurrentPost != null)
         {
-            "e" => GetColorResource("Danger500"),
-            "q" => GetColorResource("Warn500"),
-            "s" => GetColorResource("Success500"),
-            _ => GetColorResource("Gray500")
-        };
+            MainBorder.Stroke = CurrentPost.Rating.Trim().ToLower() switch
+            {
+                "e" => GetColorResource("Danger500"),
+                "q" => GetColorResource("Warn500"),
+                "s" => GetColorResource("Success500"),
+                _ => GetColorResource("Gray500")
+            };
+        }
     }
 
     private Color GetColorResource(string key)

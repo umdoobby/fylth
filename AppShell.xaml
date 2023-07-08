@@ -14,6 +14,11 @@
             ContentTemplate="{DataTemplate views:E621PostsPage}"
             Route="E621PostsPage" />
     </FlyoutItem>
-    
+
+    <FlyoutItem Title="Settings">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:SettingsPage}"
+            Route="SettingsPage" />
+    </FlyoutItem>
 
 </Shell>

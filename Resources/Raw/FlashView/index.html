@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fylth Flash View</title>
+    
+    <style>
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="content"></div>
+<script type="text/javascript">
+    window.RufflePlayer = window.RufflePlayer || {};
+    function playFile(url) {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        const container = document.getElementById("container");
+        container.appendChild(player);
+        player.load(url);
+    }
+</script>
+<script src="ruffle/ruffle.js"></script>
+</body>
+</html>
